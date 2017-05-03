@@ -1,0 +1,191 @@
+.mui-plus.mui-android header.mui-bar{
+	display: none;
+}
+.mui-plus.mui-android .mui-bar-nav~.mui-content{
+	padding: 0;
+}
+
+/*-----自定义样式 start-----*/
+html,body{
+	width: 100%;
+	height: 100%;
+	background-color: #efeff4;
+	font-size: 12px;
+}
+html,body,ul,li,img{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+#allmap{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+/*-----main start-----*/
+.main_search{
+	position: absolute;
+	opacity: 1;
+	top: 50px;
+	z-index: 10;
+	width: 80%;
+	left: 10%
+}
+.main_search span{
+	position: absolute;
+	margin: 5px 0 0 5px;
+	
+}
+.main_change{
+	position: absolute;
+	z-index: 3;
+	zoom: 1;
+	width: 40px;
+	height: 90px;
+	bottom: 15%;
+	right: 2%;
+}
+.main_change li img{
+	width: 40px;
+	height: 40px;
+}
+.main_info_img{
+	width: 12px;
+	height: 15px;
+	float: left;
+	margin: 4px 10px 0 0;
+}
+.main_info_li{
+	float: left;
+	width: 50%;
+}
+#control li div{
+	font-size: 12px;
+}
+#control img{
+	width: 35px;
+	height: 35px;
+}
+/*重写百度api样式*/
+.BMap_pop{
+	opacity: 0.8;
+}
+/*-----main end-----*/
+/*-----mileage start-----*/
+.mileage_begin,.mileage_end{
+	display: inline-block;
+	width: 80%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	line-height: 32px;
+	margin-top: 5px;
+}
+.mileage_begin>img,.mileage_end>img{
+	width: 20px;
+	height: 30px;
+	float: left;
+	margin-right: 10px;
+}
+.mileage_play{
+	width: 35px;
+	height: 35px;
+	margin-bottom: -60px;
+	margin-left: 20px;
+}
+.mileage_mi{
+	text-align: center;border-right: solid 1px #000;
+}
+.mileage_time{
+	text-align: center;
+}
+/*-----mileage end-----*/
+
+/*-----track start-----*/
+.track_carnum{
+	
+}
+.track_search{
+	margin: 0;
+	padding: 0;
+	width: 50%;
+}
+.track_detail{
+	position: fixed;
+	opacity: 0.8;
+	bottom: 50px;
+	width: 100%;
+	background-color: #fff;
+	z-index: 10;
+}
+.track_detail_all{
+	display: inline-block;
+	float: left;
+	width: 75%;
+	margin-left: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.track_detail_all li{
+	list-style: none;
+}
+.track_detail_mileage{
+	display: inline-block;
+	float: right;
+	width: 20%;
+}
+.track_detail_mileage span{
+	line-height: 60px;
+}
+.track_progress_div{
+	display: inline-block;
+	margin-top: 22px;
+	margin-left: 3%;
+	width: 70%;
+}
+.track_progress{
+	height: 5px;
+}
+.track_play,.track_quick{
+	width: 8%;
+	height: 30px;
+	margin: 2% 2% 0 2%;
+}
+.track_play{
+	float: left;
+}
+.track_quick{
+	float: right;
+}
+/*-----track end-----*/
+/*-----cars start-----*/
+.cars_speed {
+	display: inline-block;
+	float: right;
+	font-size: 12px;
+	font-weight: normal;
+}
+.mui-slider .mui-slider-group .mui-control-content .cars_img{
+	width: 10px;
+	height: 15px;
+	float: left;
+	margin: 30px 10px 25px 0;
+}
+.cars_detail_all{
+	position: fixed;
+	opacity: 0.8;
+	bottom: 50px;
+	width: 100%;
+	background-color: #fff;
+	z-index: 10;
+	padding: 0 10px;
+}
+.cars_detail_online{
+	display: inline-block;
+	float: right;
+}
+.cars_detail_user{
+	
+}
+/*-----cars end-----*/
