@@ -7,15 +7,12 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/project.css"/>
+		<script src="../lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
 		<style>
-			html,
-			body {
+			html,body {
 				background-color: #fff;
-			}
-			.title{
-				margin: 0px 15px 7px;
-				color: #fff;
-				font-size: 15px;
 			}
 		</style>
 	</head>
@@ -26,25 +23,23 @@
 		</header>
 		<div class="mui-content" style="background-color: #fff;">
 			<div class="mui-input-row mui-search">
-				<input type="search" class="mui-input-clear" placeholder="">
+				<input type="search" class="mui-input-clear" placeholder="查车">
 			</div>
-			<div class="title">
-				<a>最近查找</a>
+			<div class="cars_latest">
+				<ul>
+					<li><a href="javascript:void(0);">最近查找</a></li>
+					<li><a href="javascript:void(0);" id="clearHis">清空记录</a></li>
+				</ul>
 			</div>
 			<ul class="mui-table-view">
-				<li class="mui-table-view-cell">
+				<!--<li class="mui-table-view-cell">
 					鄂A75B80
-				</li>
-				<li class="mui-table-view-cell">
-					鄂A75B80
-				</li>
-				<li class="mui-table-view-cell">
-					鄂A75B80
-				</li>
+				</li>-->
 			</ul>
 		</div>
 	</body>
 	<script src="../../js/mui.min.js"></script>
+	<script src="../js/cars_search.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		mui.init({
 			swipeBack:true //启用右滑关闭功能

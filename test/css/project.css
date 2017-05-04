@@ -72,8 +72,23 @@ li{
 .BMap_pop{
 	opacity: 0.8;
 }
-/*-----main end-----*/
-/*-----mileage start-----*/
+/*----------------------main end----------------------*/
+
+/*----------------------cars start----------------------*/
+.cars_latest{
+	display: block;
+	height: 30px;
+	text-align: center;
+}
+.cars_latest li{
+	display: inline-block;
+	float: left;
+	width: 50%;
+	line-height: 15px;
+}
+/*----------------------cars end----------------------*/
+
+/*----------------------mileage start----------------------*/
 .mileage_begin,.mileage_end{
 	display: inline-block;
 	width: 80%;

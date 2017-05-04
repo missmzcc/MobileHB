@@ -22,13 +22,16 @@ $(function(){
 		mui(document).on("tap",".main_search",function(){
 			window.location.href = 'cars_search.html';
 		});
-		//mui阻止了a的默认事件,要跳转页面必须写方法
+		//mui阻止了a的默认跳转事件,要跳转页面必须写方法
 		mui("nav").on("tap","#defaultTab",function(){
 			window.location.href = 'cars_status.html';
 		});
 		mui("nav").on("tap","#about",function(){
 			window.location.href = 'setting.html';
 		});
+		mui('.mui-scroll').on('tap','li',function(e){
+			window.location.href = this.getElementsByTagName("a")[0].href;
+		}) 
 	}
 	/*---------------事件绑定 end---------------*/
 	
