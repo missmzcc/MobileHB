@@ -2,7 +2,6 @@ $(function(){
 	/*---------------全局变量 start---------------*/
 	var domain = $.domain();
 	var map = new BMap.Map("allmap");
-	var track_search = 	JSON.parse($.sessionStorage("track_search"));
 	/*---------------全局变量 end---------------*/
 	
 	//初始化
@@ -12,15 +11,28 @@ $(function(){
 	}
 	//数据获取
 	function getData(){
-		var usr = "UR16040002";
-		var pwd = "40BD001563085FC35165329EA1FF5C5ECBDBBEEF";
-		var car = "鄂AP9018";
-		var beginTime = "2017-05-01 00:00:00";
-		var endTime = "2017-05-04 23:59:59";
+		var data = {
+			api:"history_pos",
+			usr:"UR16040002",
+			pwd:"40BD001563085FC35165329EA1FF5C5ECBDBBEEF"
+		};
+		var track_search = 	$.sessionStorage("track_search");
+		if(track_search){							//从历史轨迹搜索页进入
+			var track =JSON.parse(track_search);
+			data.begin_time = track.begin_time;
+			data.end_time = track.end_time;
+			data.car = track.car;
+			sessionStorage.removeItem("track_search");
+		}else{										//从车辆列表进入
+			data.car = $.sessionStorage("track_car");
+			data.begin_time = $.yesterday();
+			data.end_time = $.nowday();
+			sessionStorage.removeItem("track_car");
+		}
 		$.ajax({
 			type:"post",
 			url:domain,
-			data:{api:"history_pos",usr:usr,pwd:pwd,car:car,begin_time:beginTime,end_time:endTime},
+			data:data,
 			success:function(Result){
 				if(Result){
 					var result = JSON.parse(Result);
@@ -35,7 +47,7 @@ $(function(){
 			}
 		});
 	}
-	//画线
+	//画轨迹线
 	function addOverlays(data){
 		var leng = data.length;
 		if(leng === 0){

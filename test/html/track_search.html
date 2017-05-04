@@ -71,11 +71,11 @@
 					var vehicleId = document.getElementById("vehicleId").innerText;
 					var beginTime = document.getElementById("beginTime").innerText;
 					var endTime = document.getElementById("endTime").innerText;
-					sessionStorage.setItem("track_search",{
-						vehicleId:vehicleId,
-						beginTime:beginTime,
-						endTime:endTime
-					})
+					sessionStorage.setItem("track_search",JSON.stringify( {
+						car:vehicleId,
+						begin_time:beginTime,
+						end_time:endTime
+					}));
 					mui.openWindow({
 						url:"track_play.html",
 						id:"track_play"

@@ -112,14 +112,13 @@
 										<div class="mui-table">
 											<div class="mui-table-cell mui-col-xs-3">
 												<img class="cars_img" src="../images/u142.png">
-												<h4 class="mui-ellipsis">鄂A123KA&nbsp;<span class='cars_speed'>50km/h</span></h4>
-												<h5 class="mui-ellipsis">武汉市硚口区建设大道附近ghdhgfdhghtfjyhjyrujyr</h5>
+												<h4 class="mui-ellipsis"><a href="javascript:void(0);">鄂A123KA</a><span class='cars_speed'>50km/h</span></h4>
+												<h5 class="mui-ellipsis">武汉市硚口区建设大道附近</h5>
 												<p class="mui-h6 mui-ellipsis">GPS定位,熄火,车门关</p>
 											</div>
-											<div class="mui-table-cell mui-col-xs-2 mui-text-right">
-												<a class="mui-navigate-right">
-													<span class="mui-h5">12:25:32</span>
-												</a>
+											<div class="mui-table-cell mui-col-xs-2 mui-text-right cars_status_img">
+												<span>12:25:32</span>
+												<img src="../images/u132.png"/>
 											</div>
 										</div>
 									</li>
@@ -175,6 +174,8 @@
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/mui.pullToRefresh.js"></script>
 		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script src="../lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
 		<script>
 			mui.init({
 				swipeBack: false,
@@ -191,17 +192,17 @@
 					//循环初始化所有下拉刷新，上拉加载。
 					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
 						$(pullRefreshEl).pullToRefresh({
-							down: {
-								callback: function() {
-									var self = this;
-									setTimeout(function() {
-										var ul = self.element.querySelector('.mui-table-view');
-										ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
-										self.endPullDownToRefresh();
-//										mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-									}, 1000);
-								}
-							},
+//							down: {
+//								callback: function() {
+//									var self = this;
+//									setTimeout(function() {
+//										var ul = self.element.querySelector('.mui-table-view');
+//										ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
+//										self.endPullDownToRefresh();
+////										mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+//									}, 1000);
+//								}
+//							}
 							up: {
 								callback: function() {
 									var self = this;
@@ -230,6 +231,7 @@
 				});
 			})(mui);
 		</script>
+		<script src="../js/cars_status.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 
 </html>

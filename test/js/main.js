@@ -31,7 +31,15 @@ $(function(){
 		});
 		mui('.mui-scroll').on('tap','li',function(e){
 			window.location.href = this.getElementsByTagName("a")[0].href;
-		}) 
+		});
+		$(".main_change li").click(function(){
+			var index = $(this).index();
+			if(index === 0){
+				
+			}else{
+				
+			}
+		});
 	}
 	/*---------------事件绑定 end---------------*/
 	

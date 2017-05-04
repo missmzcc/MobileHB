@@ -203,4 +203,14 @@ li{
 .cars_detail_user{
 	
 }
+.cars_status_img{
+	text-align: center;
+}
+.cars_status_img span{
+	display: block;
+}
+.mui-slider .mui-slider-group .mui-slider-item img{
+	width: 30px;
+	margin-right: 12px;
+}
 /*-----cars end-----*/
