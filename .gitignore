@@ -1,3 +1,5 @@
-.project
 /unpackage/
+/examples
+.project
 index.html
+mainfest.json
