@@ -5,17 +5,9 @@ $(function(){
 	
 	function init(){
 		$.map_init(map);
+		initCar();
 	}
-	var marker = new BMap.Marker(new BMap.Point(114.3162,30.581084));
-	map.addOverlay(marker);
-	var opts = {
-	    width: 210,     // 信息窗口宽度
-	    height: 130,     // 信息窗口高度
-	    title: '<div><a href="javascript:void(0);">鄂A123KA</a><img src="../images/u142.png" class="main_info_img"/></div>' // 信息窗口标题
-	}
-	var msg = new Date().toLocaleString() + '</br>速度:0.00km/h</br>当日里程:31.7km/h';
-	var custom = '<div style="text-align: center;"><ul><li class="main_info_li"><a href="track_search.html">轨迹</a></li><li><a href="cars_detail.html">详情</a></li></ul></div>';
-	$.openInfoWindowCustom(map,marker,msg,opts,custom,true);
+	
 	/*---------------事件绑定 start---------------*/
 	function bindEvent(){
 		//搜索跳转
@@ -29,13 +21,23 @@ $(function(){
 		mui("nav").on("tap","#about",function(){
 			window.location.href = 'setting.html';
 		});
-		mui('.mui-scroll').on('tap','li',function(e){
+		mui('#productLists').on('tap','li',function(e){
 			window.location.href = this.getElementsByTagName("a")[0].href;
 		});
+		//人机切换
 		$(".main_change li").click(function(){
 			var index = $(this).index();
 			if(index === 0){
-				
+				map.clearOverlays();
+				if(window.plus){					//如果是app中
+					mui.plusReady(function(){
+				    	plus.geolocation.getCurrentPosition(translatePoint,function(e){
+				        	mui.toast("异常:" + e.message);
+				    	});
+					});
+				}else{								//如果是在web网页中
+					translateWeb();
+				}			
 			}else{
 				
 			}
@@ -43,6 +45,63 @@ $(function(){
 	}
 	/*---------------事件绑定 end---------------*/
 	
+	//检测缓存中是否有需要搜索的car
+	function initCar(){
+		var sessionData = sessionStorage.getItem("main_cardata");
+		if (sessionData) {
+			var carData = JSON.parse(sessionData);
+			console.log(carData);
+			var point = new BMap.Point(carData.lng,carData.lat)
+			var marker = new BMap.Marker(point);
+			map.panTo(point);
+			map.addOverlay(marker);
+			var opts = {
+			    width: 210,     // 信息窗口宽度
+			    height: 130,     // 信息窗口高度
+			    title: '<div><a href="javascript:void(0);">鄂A123KA</a><img src="../images/u142.png" class="main_info_img"/></div>' // 信息窗口标题
+			}
+			var msg = carData.recordtime + '</br>速度:' + carData.speed + 'km/h</br>当日里程:' + carData.mileage + 'km/h';
+			var custom = '<div style="text-align: center;"><ul><li class="main_info_li"><a href="track_search.html">轨迹</a></li><li><a href="cars_detail.html">详情</a></li></ul></div>';
+			$.openInfoWindowCustom(map,marker,msg,opts,custom,true);
+		}
+	}
+
+
+	//在app环境中检测用户当前位置
+	function translatePoint(position){
+	    var currentLon = position.coords.longitude;
+	    var currentLat = position.coords.latitude;
+	    var gpsPoint = new BMap.Point(currentLon,currentLat);
+	    map.Convertor.translate(gpsPoint,2,function(){
+	    	map.addControl(new BMap.NavigationControl());
+	    	map.addControl(new BMap.ScaleControl());
+	    	map.addControl(new BMap.OverviewMapControl());
+	    	map.centerAndZoom(point,16);
+	    	map.addOverlay(new BMap.Marker(point));
+	    });
+	}
+	
+	//在浏览器环境中检测用户当前位置
+	function translateWeb(){
+		var mask = mui.createMask().show();
+		var geolocation = new BMap.Geolocation();
+		geolocation.getCurrentPosition(function(r){
+			if(this.getStatus() == BMAP_STATUS_SUCCESS){
+				mask.close();
+                var marker = new BMap.Marker(r.point);
+                map.addOverlay(marker);
+                map.panTo(r.point);
+                map.addControl(new BMap.NavigationControl());
+	    		map.addControl(new BMap.ScaleControl());
+	    		map.addControl(new BMap.OverviewMapControl());
+			}else {
+				mui.alert("failed:"+this.getStatus());
+			}
+		},{enableHighAccuracy: true});
+	}
+	
+	//初始化
 	init();
+	//绑定事件
 	bindEvent();
 })

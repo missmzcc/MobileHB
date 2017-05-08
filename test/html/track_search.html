@@ -9,9 +9,6 @@
 		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css">
 		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
 		<link rel="stylesheet" href="../css/project.css" />
-		<link rel="stylesheet" href="http://api.map.baidu.com/res/12/bmap.css"/>
-		<script type="text/javascript" src="../lib/jquery.min.js"></script>
-		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ufOt9niI1yBSuBqBBSBGGaLmRH7kQKHR"></script>
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
@@ -20,69 +17,34 @@
 		</header>
 		<div class="mui-content" style="background-color: #fff;">
 			<div class="mui-content-padded mui-text-center" >
-				<a id="vehicleId">鄂A123KA</a>
+				<a id="vehicleId" style="font-size: 24px;font-size: 2rem;">鄂AP9018</a>
 			</div>
-			<div>
+			<div class="track_search_condition">
 				<div class="mui-content-padded">
-					开始时间&nbsp;&nbsp;<span id="beginTime">2017/04/14 12:12:12</span><br/>
-					结束时间&nbsp;&nbsp;<span id="endTime">2017/04/14 12:12:12</span><br/>
+					开始时间&nbsp;&nbsp;<span id="beginTime"></span><br/><br/>
+					结束时间&nbsp;&nbsp;<span id="endTime"></span><br/><br/>
 				</div>
 				<form class="mui-input-group">
 					<div class="mui-input-row mui-checkbox mui-left">
 						<label>过滤0数值</label>
-						<input name="checkbox" value="Item 1" type="checkbox" >
+						<input name="zero" value="Item 1" type="checkbox" >
 					</div>
 					<div class="mui-input-row mui-checkbox mui-left">
 						<label>过滤非精确定位</label>
-						<input name="checkbox" value="Item 2" type="checkbox" checked>
+						<input name="filter" value="Item 2" type="checkbox" >
 					</div>
 				</form>
 			</div>
 			<div class="mui-content-padded" style="margin: 50px;text-align: center;">
-				<button id='searchBtn' type="button" class="mui-btn mui-btn-blue mui-btn-block">搜索</button>
+				<button id='searchBtn' type="button" class="mui-btn mui-btn-blue mui-btn-block" style="margin: 0;padding: 6px;">查询</button>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/mui.picker.min.js"></script>
 		<script type="text/javascript" charset="utf-8"> 
-			 //mui初始化
 			mui.init();
 		</script>
-		<script type="text/javascript">
-			(function($) {
-				var beginBtn = document.getElementById("beginTime");
-				var endBtn = document.getElementById("endTime");
-				mui(document).on('tap','.mui-content-padded',function(e){
-					var target = e.target;
-					if(target.id === "beginTime"){
-						var picker = new $.DtPicker();
-						picker.show(function(rs){
-							beginBtn.innerHTML = rs.text;
-						});
-					}else if(target.id === "endTime"){
-						var picker = new $.DtPicker();
-						picker.show(function(rs){
-							endBtn.innerHTML = rs.text;
-						});
-					}
-				});
-				var serach = document.getElementById("searchBtn");
-				serach.addEventListener('tap',function(){
-					var vehicleId = document.getElementById("vehicleId").innerText;
-					var beginTime = document.getElementById("beginTime").innerText;
-					var endTime = document.getElementById("endTime").innerText;
-					sessionStorage.setItem("track_search",JSON.stringify( {
-						car:vehicleId,
-						begin_time:beginTime,
-						end_time:endTime
-					}));
-					mui.openWindow({
-						url:"track_play.html",
-						id:"track_play"
-					});
-				});
-			})(mui);
-		</script>
+		<script src="../js/track_search.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 
 </html>

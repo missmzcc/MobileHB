@@ -15,16 +15,16 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 id="title" class="mui-title">鄂A123KA</h1>
+			<h1 id="title" class="mui-title"></h1>
 		</header>
 		<div id="allmap"></div>
 		<div class="cars_detail_all">
 			<div class="cars_detail">
 				<ul>
-					<li><a href="javascript:void(0);">2017/04/14 20:20:20</a><a class="cars_detail_online" href="javascript:void(0);">在线</a></li>
-					<li>速度:&nbsp;<a href="javascript:void(0);">80</a>km/h</li>
-					<li>里程:&nbsp;<a href="javascript:void(0);">35874.1</a>km</li>
-					<li>油量:&nbsp;<a href="javascript:void(0);">222.4</a>L</li>
+					<li><a href="javascript:void(0);">2017/04/14 20:20:20</a><a class="cars_detail_online" href="javascript:void(0);"></a></li>
+					<li>速度:&nbsp;<a href="javascript:void(0);"></a>km/h</li>
+					<li>里程:&nbsp;<a href="javascript:void(0);"></a>km</li>
+					<li>油量:&nbsp;<a href="javascript:void(0);"></a>L</li>
 					<li>状态:&nbsp;<a href="javascript:void(0);">GPS定位,熄火,车门关</a></li>
 					<li>位置:&nbsp;<a href="javascript:void(0);">湖北省武汉市硚口区建设大道</a></li>
 				</ul>
@@ -41,10 +41,10 @@
 			<a id="telphone" class="mui-tab-item mui-active">
 				<span class="mui-icon mui-icon-phone-filled"></span>
 			</a>
-			<a id="message" class="mui-tab-item" href="#control">
+			<a id="message" class="mui-tab-item">
 				<span class="mui-icon mui-icon-chat"></span>
 			</a>
-			<a id="about" class="mui-tab-item" >
+			<a id="location" class="mui-tab-item" >
 				<span class="mui-icon mui-icon-gear"></span>
 			</a>
 		</nav>
@@ -54,10 +54,8 @@
 				swipeBack: false,
 			});
 		</script>
-		<script>
-			var map = new BMap.Map("allmap");
-			$.map_init(map);
-		</script>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/cars_detail.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 
 </html>

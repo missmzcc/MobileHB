@@ -3,7 +3,42 @@ $(function(){
 	/*---------------全局变量 end---------------*/
 	
 	function init(){
-		getInitData();
+		getData();
+	}
+	
+	/*---------------事件绑定 start---------------*/
+	function bindEvent(){
+		$(".mui-table .cars_status_img").click(function(){
+			var $this = $(this);
+			gotoDetail($this);
+		});
+	}
+	/*---------------事件绑定 end---------------*/
+	
+	function getData(){
+		$.ajax({
+			type:"post",
+			url:$.domain(),
+			data:{
+				api:"getCarsInnerTree",
+				usr:"UR16040002",
+				q:""
+			},
+			async:true,
+			success:function(Result){
+				if(Result){
+					var result = JSON.parse(Result);
+					if(result.success){
+						var data = JSON.parse(result.data);
+						console.log(data);
+					}else{
+						mui.alert(result.mesasge);
+					}
+				}else{
+					mui.alert("系统异常!");
+				}
+			}
+		});
 	}
 	
 	function getInitData(){
@@ -55,44 +90,12 @@ $(function(){
 		});
 	}
 	
-	function getData(){
-		$.ajax({
-			type:"post",
-			url:$.domain(),
-			data:{
-				api:"getCarsInnerTree",
-				usr:"UR16040002",
-				q:""
-			},
-			async:true,
-			success:function(Result){
-				if(Result){
-					var result = JSON.parse(Result);
-					if(result.success){
-						var data = JSON.parse(result.data)
-					}else{
-						mui.alert(result.mesasge);
-					}
-				}else{
-					mui.alert("系统异常!");
-				}
-			}
-		});
-	}
 	//跳转到详情页
 	function gotoDetail(ths){
 		var car = ths.siblings("div").find("h4 a").html();
+		sessionStorage.setItem("cars_staus",car);
 		window.location.href = "cars_detail.html";
 	}
-	
-	/*---------------事件绑定 start---------------*/
-	function bindEvent(){
-		$(".mui-table .cars_status_img").click(function(){
-			var $this = $(this);
-			gotoDetail($this);
-		})
-	}
-	/*---------------事件绑定 end---------------*/
 	
 	init();
 	bindEvent();

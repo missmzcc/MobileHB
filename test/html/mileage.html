@@ -6,8 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<!--标准mui.css-->
 		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
 		<link rel="stylesheet" href="../css/project.css"/>
 		<style>
 			.mui-table h4,.mui-table h5,.mui-table .mui-h5,.mui-table .mui-h6,.mui-table p{
@@ -31,7 +31,7 @@
 		<header class="mui-bar mui-bar-nav">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <a class="mui-pull-right" style="margin-top: 12px;">2017-04-15</a>
-		    <h1 class="mui-title">鄂A123KA</h1>
+		    <h1 class="mui-title">鄂AP9018</h1>
 		</header>
 		<div class="mui-content">
 		    <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
@@ -40,14 +40,14 @@
 		                <div class="mui-table-cell mui-col-xs-10">
 		                    <h4>00:00:00-23:59:59</h4>
 		                    <span class="mileage_begin">
-		                    	武汉市硚口区建设大道<img src="../images/u653.png"/>
+		                    	<a href="javascript:void(0);">武汉市硚口区建设大道</a><img src="../images/u653.png"/>
 		                    </span>
 		                    <span class="mileage_end">
-		                    	武汉市硚口区建设大道<img src="../images/u655.png"/>
+		                    	<a href="javascript:void(0);">武汉市硚口区建设大道</a><img src="../images/u655.png"/>
 		                    </span>
 		                </div>
 		                <div class="mui-table-cell mui-col-xs-2">
-		                	<a href="track_play.html"><img src="../images/u659.png" class="mileage_play"/></a>
+		                	<img src="../images/u659.png" class="mileage_play"/></a>
 		                </div>
 		            </div>
 		            <div class="mui-table">
@@ -65,6 +65,8 @@
 		</div>
 	</body>
 	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/mui.picker.min.js"></script>
+	<script src="../js/mileage.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		mui.init({
 			swipeBack:true //启用右滑关闭功能
