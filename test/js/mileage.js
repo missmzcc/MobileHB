@@ -1,10 +1,11 @@
 (function($) {
 	/*---------------全局变量 start---------------*/
+	var domain = Configure.domain;
 	/*---------------全局变量 end---------------*/
 
 	function init() {
+		initTime();
 		getData();
-		initDate();
 	}
 
 	/*---------------事件绑定 start---------------*/
@@ -33,14 +34,24 @@
 	}
 	/*---------------事件绑定 end---------------*/
 
+	//初始化右上角为当天
+	function initTime() {
+		var time = new Date();
+		var month = time.getMonth() < 9 ? "0" + (time.getMonth() + 1) : time.getMonth() + 1;
+		var day = time.getDate() < 10 ? "0" + time.getDate() : time.getDate();
+		document.querySelector(".mui-pull-right").innerText = time.getFullYear() + "-" + month + "-" + day;
+	}
+
 	//数据获取
 	function getData() {
 		var car = document.querySelector(".mui-title").innerText;
-		var day = initDate();
+		var day = document.querySelector(".mui-pull-right").innerText;
 		$.ajax({
-			type: "get",
-			url: "",
+			type: "post",
+			url: domain,
 			data: {
+				api:"getMileageDetail",
+				usr:"UR16040002",
 				car: car,
 				beginTime: day + " 00:00:00",
 				endTime: day + " 23:59:59"
@@ -49,13 +60,14 @@
 				if(Result) {
 					var result = JSON.parse(Result);
 					if(result.success) {
-						var data = reuslt.data;
+						var data = result.data[0];
+						dataShow(data);
 						document.querySelector(".mileage_begin").innerText = data.begin;
 						document.querySelector(".mileage_end").innerText = data.end;
 						document.querySelector(".mileage_mi").innerText = data.end;
 						document.querySelector(".mileage_time").innerText = data.end;
 					} else {
-						mui.alert(reuslt.message);
+						mui.alert(result.message);
 					}
 				} else {
 					mui.alert("系统错误");
@@ -64,15 +76,17 @@
 		});
 	}
 
-	//初始化右上角为当天
-	function initDate() {
-		var time = new Date();
-		var month = time.getMonth() < 9 ? "0" + (time.getMonth() + 1) : time.getMonth() + 1;
-		var day = time.getDate() < 10 ? "0" + time.getDate() : time.getDate();
-		document.querySelector(".mui-pull-right").innerText = time.getFullYear() + "-" + month + "-" + day;
-		return time.getFullYear() + "-" + month + "-" + day;
+	//数据展示
+	function dataShow(data){
+		if(data.length === 2){
+			
+		}else if(data.length === 1){
+			
+		}else{
+			mui.alert("无数据");
+		}
 	}
-
+	
 	//初始化
 	init();
 	//绑定事件

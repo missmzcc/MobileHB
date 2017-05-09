@@ -1,5 +1,7 @@
 /*百度地图工具类，需先加载jquery以及百度地图api*/
 (function ($) {
+	var geoc = new BMap.Geocoder();
+	var convertor = new BMap.Convertor();
     $.extend({
         map_init: function (map,param) {
             var defaultParam = {
@@ -22,7 +24,6 @@
             markers.addEventListener("click", function (e) {
                 var point = new BMap.Point(e.target.getPosition().lng, e.target.getPosition().lat);
                 if (geo) {
-                    var geoc = new BMap.Geocoder();
                     geoc.getLocation(point, function (result) {
                         message += '<br>位置:' + result.address;
                         map.openInfoWindow(new BMap.InfoWindow(message, opts), point);
@@ -68,11 +69,19 @@
             }
         },
         //百度逆地址解析
-        geocoder: function (lng, lat, callback) {
-            var geoc = new BMap.Geocoder();
-            geoc.getLocation(point, function (result) {
-                callback(result);
-            });
+        geocoder: function (lng, lat, callback,bool) {
+        	if(bool){
+		        var point = new BMap.Point(lng,lat);
+		        convertor.translate([point],1,5,function(rs){
+		          	geoc.getLocation(rs.points[0], function (result) {
+		          	    callback(result);
+		          	});
+		        });
+        	}else{
+        		geoc.getLocation(new BMap.Point(lng,lat),function(result){
+        			callback(result);
+        		});
+        	}
         }
     })
 })(window.jQuery)
