@@ -82,16 +82,60 @@ li{
 /*----------------------main end----------------------*/
 
 /*----------------------cars start----------------------*/
-.cars_latest{
+.cars_search_main{
+	
+}
+.cars_search_latest{
 	display: block;
 	height: 30px;
 	text-align: center;
 }
-.cars_latest li{
+.cars_search_latest li{
 	display: inline-block;
 	float: left;
-	width: 50%;
+	width: 33%;
 	line-height: 15px;
+}
+.cars_search_rs{
+	display: none;
+}
+.cars_speed {
+	display: inline-block;
+	float: right;
+	font-size: 12px;
+	font-weight: normal;
+}
+.mui-slider .mui-slider-group .mui-control-content .cars_img{
+	width: 10px;
+	height: 15px;
+	float: left;
+	margin: 30px 10px 25px 0;
+}
+.cars_detail_all{
+	position: fixed;
+	opacity: 0.8;
+	bottom: 50px;
+	width: 100%;
+	background-color: #fff;
+	z-index: 10;
+	padding: 0 10px;
+}
+.cars_detail_online{
+	display: inline-block;
+	float: right;
+}
+.cars_detail_user{
+	
+}
+.cars_status_img{
+	text-align: center;
+}
+.cars_status_img span{
+	display: block;
+}
+.mui-slider .mui-slider-group .mui-slider-item img{
+	width: 30px;
+	margin-right: 12px;
 }
 /*----------------------cars end----------------------*/
 
@@ -146,7 +190,7 @@ li{
 .track_detail{
 	position: fixed;
 	opacity: 0.8;
-	bottom: 50px;
+	bottom: 0;
 	width: 100%;
 	background-color: #fff;
 	z-index: 10;
@@ -171,18 +215,17 @@ li{
 	line-height: 60px;
 }
 .track_progress_div{
-	display: inline-block;
-	margin-top: 22px;
+	/*display: inline-block;
+	margin-top: 3%;
 	margin-left: 3%;
-	width: 70%;
+	width: 70%;*/
 }
 .track_progress{
 	height: 5px;
 }
 .track_play,.track_quick{
-	width: 8%;
-	height: 30px;
-	margin: 2% 2% 0 2%;
+	height: 60%;
+	margin: 0 20%;
 }
 .track_play{
 	float: left;
@@ -191,43 +234,3 @@ li{
 	float: right;
 }
 /*-----track end-----*/
-/*-----cars start-----*/
-.cars_speed {
-	display: inline-block;
-	float: right;
-	font-size: 12px;
-	font-weight: normal;
-}
-.mui-slider .mui-slider-group .mui-control-content .cars_img{
-	width: 10px;
-	height: 15px;
-	float: left;
-	margin: 30px 10px 25px 0;
-}
-.cars_detail_all{
-	position: fixed;
-	opacity: 0.8;
-	bottom: 50px;
-	width: 100%;
-	background-color: #fff;
-	z-index: 10;
-	padding: 0 10px;
-}
-.cars_detail_online{
-	display: inline-block;
-	float: right;
-}
-.cars_detail_user{
-	
-}
-.cars_status_img{
-	text-align: center;
-}
-.cars_status_img span{
-	display: block;
-}
-.mui-slider .mui-slider-group .mui-slider-item img{
-	width: 30px;
-	margin-right: 12px;
-}
-/*-----cars end-----*/

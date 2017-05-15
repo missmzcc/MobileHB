@@ -10,11 +10,6 @@
 		<link rel="stylesheet" type="text/css" href="../css/project.css"/>
 		<script src="../lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
-		<style>
-			html,body {
-				background-color: #fff;
-			}
-		</style>
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
@@ -24,18 +19,18 @@
 		<div class="mui-content" style="background-color: #fff;">
 			<div class="mui-input-row mui-search">
 				<input type="search" class="mui-input-clear" placeholder="">
+				<!--<input type="search" class="mui-input-row mui-search mui-input-clear" style="position: relative;" />-->
+				<!--<ul id="searchrs" style="width: 100%;top: 80px; position: absolute;z-index: 10;background-color: rgba(0,0,0,.5);"></ul>-->
 			</div>
-			<div class="cars_latest">
-				<ul>
+			<div>
+				<ul class="cars_search_latest">
 					<li><a href="javascript:void(0);">最近查找</a></li>
+					<li id="search"><a href="javascript:void(0);">查找</a></li>
 					<li><a href="javascript:void(0);" id="clearHistory">清空记录</a></li>
 				</ul>
+				<ul class="mui-table-view"></ul>
+				<ul class="cars_search_rs"></ul>
 			</div>
-			<ul class="mui-table-view">
-				<!--<li class="mui-table-view-cell">
-					鄂A75B80
-				</li>-->
-			</ul>
 		</div>
 	</body>
 	<script src="../../js/mui.min.js"></script>

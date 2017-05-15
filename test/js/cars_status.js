@@ -93,7 +93,7 @@ $(function(){
 	//跳转到详情页
 	function gotoDetail(ths){
 		var car = ths.siblings("div").find("h4 a").html();
-		sessionStorage.setItem("cars_staus",car);
+		sessionStorage.setItem("detail_car_no",car);
 		window.location.href = "cars_detail.html";
 	}
 	

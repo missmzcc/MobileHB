@@ -1,6 +1,8 @@
 (function($) {
 	/*---------------全局变量 start---------------*/
 	var domain = Configure.domain;
+	var geoc = new BMap.Geocoder();
+	var convertor = new BMap.Convertor();
 	/*---------------全局变量 end---------------*/
 
 	function init() {
@@ -24,7 +26,7 @@
 		//跳转轨迹回放
 		mui('.mui-content').on('tap', '.mileage_play', function() {
 			var time = document.querySelector(".mui-pull-right").innerText;
-			sessionStorage.setItem("mileage", JSON.stringify({
+			sessionStorage.setItem("track_search", JSON.stringify({
 				car: document.querySelector(".mui-title").innerText,
 				begin_time : time + " 00:00:00",
 				end_time : time + " 23:59:59"
@@ -60,12 +62,8 @@
 				if(Result) {
 					var result = JSON.parse(Result);
 					if(result.success) {
-						var data = result.data[0];
+						var data = result.data;
 						dataShow(data);
-						document.querySelector(".mileage_begin").innerText = data.begin;
-						document.querySelector(".mileage_end").innerText = data.end;
-						document.querySelector(".mileage_mi").innerText = data.end;
-						document.querySelector(".mileage_time").innerText = data.end;
 					} else {
 						mui.alert(result.message);
 					}
@@ -79,9 +77,25 @@
 	//数据展示
 	function dataShow(data){
 		if(data.length === 2){
-			
+			var mileage = data[0].mileage - data[1].mileage;
+			var time = parseInt((new Date(data[0].recordtime).getTime() - new Date(data[1].recordtime).getTime())/60000);
+			var point = new BMap.Point(data[0].lng,data[0].lat);
+			var point1 = new BMap.Point(data[1].lng,data[1].lat);
+	        convertor.translate([point,point1],1,5,function(rs){
+	          	geoc.getLocation(rs.points[0], function (result) {
+	          	    document.querySelector(".mileage_end").querySelector("a").innerText = result.address;
+	          	});
+	          	geoc.getLocation(rs.points[1], function (Result) {
+	          	    document.querySelector(".mileage_begin").querySelector("a").innerText = Result.address;
+	          	});
+	        });
+			document.querySelector(".mileage_mi").querySelector("h5").querySelector("a").innerText = mileage;
+			document.querySelector(".mileage_time").querySelector("h5").querySelector("a").innerText = time;
 		}else if(data.length === 1){
-			
+			document.querySelector(".mileage_begin").querySelector("h5").innerText = data.begin;
+			document.querySelector(".mileage_end").querySelector("h5").innerText = data.end;
+			document.querySelector(".mileage_mi").querySelector("h5").innerText = 0;
+			document.querySelector(".mileage_time").querySelector("h5").innerText = 0;
 		}else{
 			mui.alert("无数据");
 		}

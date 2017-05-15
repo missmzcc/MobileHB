@@ -38,7 +38,6 @@
         	markers.addEventListener("click", function (e) {
                 var point = new BMap.Point(e.target.getPosition().lng, e.target.getPosition().lat);
                 if (geo) {
-                    var geoc = new BMap.Geocoder();
                     geoc.getLocation(point, function (result) {
                         message += ('<br><a style="white-space: nowrap;text-overflow: ellipsis;color:#000;">位置:' + result.address + '</a>' + custom);
                         map.openInfoWindow(new BMap.InfoWindow(message, opts), point);
@@ -68,7 +67,7 @@
                 return "正北";
             }
         },
-        //百度逆地址解析
+        //百度逆地址解析,bool真,需要先将原始坐标转换成百度经纬度
         geocoder: function (lng, lat, callback,bool) {
         	if(bool){
 		        var point = new BMap.Point(lng,lat);

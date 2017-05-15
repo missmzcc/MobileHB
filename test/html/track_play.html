@@ -25,35 +25,33 @@
 		<div id="detail" class="track_detail">
 			<div class="track_detail_all">
 				<ul>
-					<li>2017/04/15 08:30:42-22:40:08</li>
-					<li>速度:<a href="">80</a>km/h</li>
-					<li>位置:<a href="">湖北省武汉市硚口区建设大道</a></li>
+					<li>2017-04-15 08:30:42-22:40:08</li>
+					<li>速度:<a href="javascript:void(0);">80</a>km/h</li>
+					<li>位置:<a href="javascript:void(0);">湖北省武汉市硚口区建设大道</a></li>
 				</ul>
 			</div>
 			<div class="track_detail_mileage">
 				<span id="mileage">802.9km</span>
 			</div>
+			<nav class="mui-bar mui-bar-tab" style="position: relative;">
+				<table cellspacing="0" cellpadding="0" style="width: 100%;height: 100%;border: none;">
+					<tr>
+						<td><img class="track_play" src="../images/u659.png"/></td>
+						<td>
+							<div class="mui-input-row mui-input-range track_progress_div" style="padding: 0;">
+					            <input type="range" id='block-range' value="0" min="0" max="100" style="padding: 0;height: 8px;">
+					        </div>
+						</td>
+						<td><img class="track_quick" src="../images/u702.png"/></td>
+					</tr>
+				</table>
+			</nav>
 		</div>
-		<nav class="mui-bar mui-bar-tab">
-			<img class="track_play" src="../images/u698.png"/>
-			<div id="demo1" class="track_progress_div">
-				<p class="mui-progressbar mui-progressbar-success track_progress"  data-progress="20"><span></span></p>
-			</div>
-			<img class="track_quick" src="../images/u702.png"/>
-		</nav>
 		<div id="allmap"></div>
 		<script src="../js/commonMap.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/track_play.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/mui.min.js"></script>
-		<script type="text/javascript" charset="utf-8">
-			mui.init();
-			var progressbar1 = mui('#demo1');
-			mui(progressbar1).progressbar().setProgress(10);
-//			progressbar1.on('tap', 'a', function() {
-//				mui(progressbar1).progressbar().setProgress(this.getAttribute('data-progress'));
-//			});
-		</script>
 	</body>
 
 </html>

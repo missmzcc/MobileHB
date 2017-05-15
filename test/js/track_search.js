@@ -1,4 +1,13 @@
 (function($) {
+	var carNo = sessionStorage.getItem("track_car_no");
+	if(!carNo){
+		mui.alert("车牌号为空,点击确认转到搜索页面","提示","确认",function(){
+			window.location.href = "cars_search.html";
+		});
+		return;
+	}else{
+		document.getElementById("vehicleId").innerText = carNo;
+	}
 	var beginBtn = document.getElementById("beginTime");
 	var endBtn = document.getElementById("endTime");
 	var time = new Date();
@@ -22,7 +31,6 @@
 	});
 	var serach = document.getElementById("searchBtn");
 	serach.addEventListener('tap',function(){
-		var vehicleId = document.getElementById("vehicleId").innerText;
 		var beginTime = document.getElementById("beginTime").innerText;
 		var endTime = document.getElementById("endTime").innerText;
 		var checkboxs = document.getElementsByTagName('input');
@@ -37,7 +45,7 @@
 			}
 		}
 		sessionStorage.setItem("track_search",JSON.stringify( {
-			car:vehicleId,
+			car:carNo,
 			begin_time:beginTime+":00",
 			end_time:endTime+":59"
 		}));

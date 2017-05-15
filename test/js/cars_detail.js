@@ -53,12 +53,14 @@ $(function(){
 	
 	//数据获取
 	function initCar(){
-		var car = sessionStorage.getItem("cars_status");
-		car = "鄂AP9018";
-		if(!car){
+		var carNo = sessionStorage.getItem("detail_car_no");
+		if(!carNo){
+			mui.alert("车牌号为空,点击确认转到搜索页面","提示","确认",function(){
+				window.location.href = "cars_search.html";
+			});
 			return;
 		}else{
-			$("#title").text(car);
+			$("#title").text(carNo);
 		}
 		$.ajax({
 			type:"post",
@@ -68,7 +70,7 @@ $(function(){
 				pwd:"40BD001563085FC35165329EA1FF5C5ECBDBBEEF",
 				api:"getCarDetail",
 				app:app,
-				car:car
+				car:carNo
 			},
 			success:function(Result){
 				if(Result){
