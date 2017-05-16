@@ -1,9 +1,16 @@
 $(function(){
 	/*---------------全局变量 start---------------*/
+	var domain = $.domain();						//请求地址url
+	var page=0;										//分页当前页
+	var pageSize=10;								//每页条数
 	/*---------------全局变量 end---------------*/
 	
 	function init(){
-		getData();
+		mui.init({
+			swipeBack: false,
+		});
+		getData(1,10);
+		getInitData();
 	}
 	
 	/*---------------事件绑定 start---------------*/
@@ -15,22 +22,55 @@ $(function(){
 	}
 	/*---------------事件绑定 end---------------*/
 	
-	function getData(){
+	function getData(that){
 		$.ajax({
 			type:"post",
-			url:$.domain(),
+			url:domain,
 			data:{
 				api:"getCarsInnerTree",
 				usr:"UR16040002",
-				q:""
+				q:"",
+				page:page,
+				pageSize:pageSize
 			},
-			async:true,
 			success:function(Result){
 				if(Result){
 					var result = JSON.parse(Result);
 					if(result.success){
 						var data = JSON.parse(result.data);
-						console.log(data);
+						var html="",htmlAll = "",htmlRun="",htmlOffline ="",htmlWarn="";
+						for (var i = 0; i < data.length; i++) {
+							var ths = data[i];
+							html += '<li class="mui-table-view-cell"><div class="mui-table">
+							html += '<div class="mui-table-cell mui-col-xs-3"><img class="cars_img" src="../images/u142.png">';
+							html += '<h4 class="mui-ellipsis"><a href="javascript:void(0);">'+ths.vehicleId+'</a>';
+							html += '<span class="cars_speed">'+ths.speed+'km/h</span></h4>';
+							html += '<h5 class="mui-ellipsis">武汉市硚口区建设大道附近</h5>';
+							html += '<p class="mui-h6 mui-ellipsis">'+ths.statuInfo+'</p></div>';
+							html += '<div class="mui-table-cell mui-col-xs-2 mui-text-right cars_status_img">';
+							html += '<span>'+ths.recordtime+'</span><img src="../images/u132.png"/>';
+							html += '</div></div></li>';
+							if(0 == ths.type){
+								htmlAll+=html;
+							}else if(1 == ths.type){
+								htmlRun+=html;
+							}else if(2 == ths.type){
+								htmlOffline+=html;
+							}else if(3 == ths.type){
+								htmlWarn+=html;
+							}
+						}
+						$.each($(".mui-slider-group .mui-scroll"),function(index){
+							if(0 === index){
+								$(this).find(".mui-table-view").append(htmlRun);
+							}else if(1 === index){
+								$(this).find(".mui-table-view").append(htmlOffline);
+							}else if(2 === index){
+								$(this).find(".mui-table-view").append(htmlWarn);
+							}else if(3 === index){
+								$(this).find(".mui-table-view").append(htmlAll);
+							}
+						})
 					}else{
 						mui.alert(result.mesasge);
 					}
@@ -53,40 +93,18 @@ $(function(){
 			//循环初始化所有下拉刷新，上拉加载。
 			mui.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
 				mui(pullRefreshEl).pullToRefresh({
-//					down: {
-//						callback: function() {
-//							var self = this;
-//							setTimeout(function() {
-//								var ul = self.element.querySelector('.mui-table-view');
-//								ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
-//								self.endPullDownToRefresh();
-//							}, 1000);
-//						}
-//					}
 					up: {
 						callback: function() {
 							var self = this;
 							setTimeout(function() {
-								var ul = self.element.querySelector('.mui-table-view');
-								ul.appendChild(createFragment(ul, index, 5));
+								getData();
 								self.endPullUpToRefresh();
+								page++;
 							}, 1000);
 						}
 					}
 				});
 			});
-			var createFragment = function(ul, index, count, reverse) {
-				var length = ul.querySelectorAll('li').length;
-				var fragment = document.createDocumentFragment();
-				var li;
-				for (var i = 0; i < count; i++) {
-					li = document.createElement('li');
-					li.className = 'mui-table-view-cell';
-					li.innerHTML = '第' + (index + 1) + '个选项卡子项-' + (length + (reverse ? (count - i) : (i + 1)));
-					fragment.appendChild(li);
-				}
-				return fragment;
-			};
 		});
 	}
 	
@@ -99,4 +117,4 @@ $(function(){
 	
 	init();
 	bindEvent();
-})
+});

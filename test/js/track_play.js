@@ -51,6 +51,9 @@ $(function(){
 		var track_search = 	$.sessionStorage("track_search");
 		if(track_search){
 			trackCondition =JSON.parse(track_search);
+		}else{
+			mui.alert("请求参数错误");
+			return;
 		}
 		data.car = trackCondition.car;
 		data.begin_time = trackCondition.begin_time;
@@ -200,4 +203,4 @@ $(function(){
 	init();
 	//绑定事件
 	bindEvent();
-})
+});

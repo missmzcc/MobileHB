@@ -76,8 +76,8 @@
 
 	//数据展示
 	function dataShow(data){
-		if(data.length === 2){
-			var mileage = data[0].mileage - data[1].mileage;
+		if(2 === data.length){
+			var mileage = parseFloat(data[0].mileage - data[1].mileage).toFixed(3);
 			var time = parseInt((new Date(data[0].recordtime).getTime() - new Date(data[1].recordtime).getTime())/60000);
 			var point = new BMap.Point(data[0].lng,data[0].lat);
 			var point1 = new BMap.Point(data[1].lng,data[1].lat);
@@ -91,7 +91,7 @@
 	        });
 			document.querySelector(".mileage_mi").querySelector("h5").querySelector("a").innerText = mileage;
 			document.querySelector(".mileage_time").querySelector("h5").querySelector("a").innerText = time;
-		}else if(data.length === 1){
+		}else if(1 === data.length){
 			document.querySelector(".mileage_begin").querySelector("h5").innerText = data.begin;
 			document.querySelector(".mileage_end").querySelector("h5").innerText = data.end;
 			document.querySelector(".mileage_mi").querySelector("h5").innerText = 0;

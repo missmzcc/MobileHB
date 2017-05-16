@@ -28,22 +28,22 @@ $(function() {
 		//人机切换
 		$(".main_change li").click(function() {
 			var index = $(this).index();
-			if(index === 0) { //人
+			if(index === 0) { 						//人
 				map.clearOverlays();
-				if(window.plus) { //如果是app中
+				if(window.plus) { 					//如果是app中
 					mui.plusReady(function() {
 						plus.geolocation.getCurrentPosition(translatePoint, function(e) {
 							mui.toast("异常:" + e.message);
 						});
 					});
-				} else { //如果是在web网页中
+				} else { 							//如果是在web网页中
 					translateWeb();
 				}
-			} else { //车
+			} else { 								//车
 				if(window.plus) {
 
 				} else {
-
+					initCar();
 				}
 			}
 		});
@@ -75,6 +75,8 @@ $(function() {
 					mui.alert("百度地图调用错误,请刷新页面!");
 				}
 	        });
+		}else{
+			mui.alert('未选择车辆');
 		}
 	}
 
