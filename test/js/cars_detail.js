@@ -10,7 +10,7 @@ $(function(){
 		$.map_init(map);
 		initCar();
 	}
-	
+
 	/*---------------事件绑定 start---------------*/
 	function bindEvent(){
 		//打电话

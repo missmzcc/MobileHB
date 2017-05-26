@@ -25,6 +25,16 @@ $(function() {
 		mui('#productLists').on('tap', 'li', function(e) {
 			window.location.href = this.getElementsByTagName("a")[0].href;
 		});
+		//百度控件效果
+		$.each($(".main_map_control li"), function(index) {
+			if(0 === index){
+				
+			}else if(1 === index){
+				
+			}else if(2 === index){					//路况
+				
+			}
+		});
 		//人机切换
 		$(".main_change li").click(function() {
 			var index = $(this).index();
@@ -64,8 +74,8 @@ $(function() {
 					map.panTo(rs.points[0]);
 					map.addOverlay(marker);
 					var opts = {
-						width: 210, // 信息窗口宽度
-						height: 130, // 信息窗口高度
+						width: 210,
+						height: 130,
 						title: '<div><a href="javascript:void(0);">' + carNo + '</a><img src="../images/u142.png" class="main_info_img"/></div>' // 信息窗口标题
 					}
 					var msg = carData.recordtime + '</br>速度:' + carData.speed + 'km/h</br>里程:' + carData.mileage + 'km';

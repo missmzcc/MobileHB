@@ -15,7 +15,7 @@
             }
             var params = $.extend(defaultParam,param);
             map.centerAndZoom(new BMap.Point(params.point.lng, params.point.lat), params.zoom);
-            map.addControl(new BMap.MapTypeControl());
+//          map.addControl(new BMap.MapTypeControl());
             map.setCurrentCity(params.city);
             map.enableScrollWheelZoom(params.isScroll);
         },

@@ -24,11 +24,62 @@ li{
 	height: 100%;
 	overflow: hidden;
 }
+/*-----login start-----*/
+.login_back{
+	width: 100%;
+	height: 250px;
+	margin: 0;
+	padding: 0;
+	background: url(../images/u1.png) #fff no-repeat top left;
+	background-size: 100% 250px;
+}
+.login_user{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+}
+.login_user li{
+	width: 80%;
+	border-bottom: solid 1px #bcbcbc;
+	margin: 5% 10%;
+	text-align: left;
+}
+.login_user ul input{
+	font-size: 20px;
+	display: inline-block;
+	margin-left: 10px;
+	border: none;
+	outline: none;
+}
+.login_user .remeber{
+	border: none;
+}
+.login{
+	display: inline-block;
+	height: 40px;
+	width: 80%;
+	margin: 5% 10%;
+	background-color: #449ef2;
+	font-size: 20px;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+}
+footer{
+	position: relative;
+	margin: 60px 20px 0 0;
+	text-align: right;
+	font-size: 20px;
+}
+/*-----login start-----*/
 /*-----main start-----*/
 .main_search{
 	position: absolute;
 	opacity: 1;
-	top: 50px;
+	top: 28px;
 	z-index: 10;
 	width: 80%;
 	left: 10%
@@ -37,19 +88,6 @@ li{
 	position: absolute;
 	margin: 5px 0 0 5px;
 	
-}
-.main_change{
-	position: absolute;
-	z-index: 3;
-	zoom: 1;
-	width: 40px;
-	height: 90px;
-	bottom: 25%;
-	right: 2%;
-}
-.main_change li img{
-	width: 40px;
-	height: 40px;
 }
 .main_info_img{
 	width: 12px;
@@ -73,7 +111,28 @@ li{
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	bottom: 50px;
+}
+.main_map_control{
+	position: absolute;
+	z-index: 3;
+	zoom: 1;
+	width: 40px;
+	height: 90px;
+	top: 5%;
+	right: 2%;
+}
+.main_change{
+	position: absolute;
+	z-index: 3;
+	zoom: 1;
+	width: 40px;
+	height: 90px;
+	bottom: 25%;
+	right: 2%;
+}
+.main_change li img,.main_map_control li img{
+	width: 40px;
+	height: 40px;
 }
 /*重写百度api样式*/
 .BMap_pop{
@@ -86,15 +145,14 @@ li{
 	
 }
 .cars_search_latest{
-	display: block;
-	height: 30px;
+	height: 40px;
 	text-align: center;
 }
 .cars_search_latest li{
 	display: inline-block;
 	float: left;
 	width: 33%;
-	line-height: 15px;
+	line-height: 40px;
 }
 .cars_search_rs{
 	display: none;

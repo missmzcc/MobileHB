@@ -41,7 +41,7 @@ $(function(){
 						var html="",htmlAll = "",htmlRun="",htmlOffline ="",htmlWarn="";
 						for (var i = 0; i < data.length; i++) {
 							var ths = data[i];
-							html += '<li class="mui-table-view-cell"><div class="mui-table">
+							html += '<li class="mui-table-view-cell"><div class="mui-table">';
 							html += '<div class="mui-table-cell mui-col-xs-3"><img class="cars_img" src="../images/u142.png">';
 							html += '<h4 class="mui-ellipsis"><a href="javascript:void(0);">'+ths.vehicleId+'</a>';
 							html += '<span class="cars_speed">'+ths.speed+'km/h</span></h4>';
@@ -70,7 +70,7 @@ $(function(){
 							}else if(3 === index){
 								$(this).find(".mui-table-view").append(htmlAll);
 							}
-						})
+						});
 					}else{
 						mui.alert(result.mesasge);
 					}
