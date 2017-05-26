@@ -1,6 +1,6 @@
 $(function() {
 	/*---------------全局变量 start---------------*/
-	
+	var domain = Configure.domain;
 	/*---------------全局变量 end---------------*/
 
 	//初始化
@@ -10,7 +10,7 @@ $(function() {
 
 	/*---------------事件绑定 start---------------*/
 	function bindEvent() {
-		mui('.login').on('tap','click',function(){
+		$(".login").click(function(){
 			login();
 		});
 	}
@@ -28,15 +28,15 @@ $(function() {
 	        var result = JSON.parse(Result);
 	        if (result.success) {
 	        	if ("UN17030003" === data.approve) {
-	                $.sessionStorage("approve","crd");//业务员
+	               	sessionStorage.setItem("approve","crd");//业务员
 	            } else if ("UN17030004" === data.approve) {
-	                $.sessionStorage("approve", "srd");//审核员
+	                sessionStorage.setItem("approve", "srd");//审核员
 	            } else if ("UN17030005" === data.approve) {
-	                $.sessionStorage("approve", "ct");//车队
+	                sessionStorage.setItem("approve", "ct");//车队
 	            } else if ("UN17030006" === data.approve) {
-	                $.sessionStorage("approve", "ch");//调度
+	                sessionStorage.setItem("approve", "ch");//调度
 	            } else {
-	                $.sessionStorage("approve", "test");
+	                sessionStorage.setItem("approve", "test");
 	            }
 	            window.location.href = "main.html";
 	        } else {

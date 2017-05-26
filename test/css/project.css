@@ -36,10 +36,13 @@ li{
 .login_user{
 	position: relative;
 	width: 100%;
-	text-align: center;
 	margin: 0;
 	padding: 0;
 	font-size: 16px;
+}
+.login_user label{
+	text-align: left;
+	margin-left: 10%;
 }
 .login_user li{
 	width: 80%;
@@ -50,10 +53,14 @@ li{
 .login_user ul input{
 	font-size: 20px;
 	display: inline-block;
+	margin: 0;
 	margin-left: 10px;
 	border: none;
 	outline: none;
+	padding: 0;
+	width: auto;
 }
+
 .login_user .remeber{
 	border: none;
 }
