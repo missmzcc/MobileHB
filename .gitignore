@@ -3,3 +3,4 @@
 .project
 index.html
 mainfest.json
+!project.css
