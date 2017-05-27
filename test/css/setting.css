@@ -13,7 +13,7 @@
 	background-color: #efeff4;
 }
 .mui-pages {
-	top: 46px;
+	top: 44px;
 	height: auto;
 }
 .mui-scroll-wrapper,
@@ -153,21 +153,22 @@
 /*-----自定义背景图片-----*/
 .user_back_img{
 	width: 100%;
-	height: 250px;
+	height: 280px;
 	background: url(../images/about_bg_01.png) #fff no-repeat top left;
 	background-size: 100% 230px;
 	position: relative;
 	text-align: center;
+	margin-top: -60px;
 }
 .user_back_img a{
 	position: absolute;
-	bottom: -35px;
+	bottom: 0;
 	left: 50%;
 	margin-left: -35px;
 	z-index: 10;
 }
 .user_back_img img{
-	width: 70px;
+	width: 60px;
 }
 .user_back_img p{
 	padding: 0;

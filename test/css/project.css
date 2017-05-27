@@ -64,7 +64,7 @@ li{
 .login_user .remeber{
 	border: none;
 }
-.login{
+.login_user input[type=button]{
 	display: inline-block;
 	height: 40px;
 	width: 80%;

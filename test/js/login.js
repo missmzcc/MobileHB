@@ -5,7 +5,8 @@ $(function() {
 
 	//初始化
 	function init() {
-		
+		//检查记住密码
+		checkRememberLog();
 	}
 
 	/*---------------事件绑定 start---------------*/
@@ -13,9 +14,27 @@ $(function() {
 		$(".login").click(function(){
 			login();
 		});
+		//帐号切换
+		$("#change").click(function(){
+			change();
+		});
 	}
 	/*---------------事件绑定 end---------------*/
+	
+	//检查记住密码
+	function checkRememberLog(){
+		var rememberLog = $.cookie("rememberLog");
+		if(rememberLog){
+			var rememberInfo = JSON.parse(rememberLog);
+			if(rememberInfo.auto){
+				$('#usr').val(rememberInfo.usr);
+				$('#pwd').val(rememberInfo.pwd);
+				$("#remember").prop("checked",true);
+			}
+		}
+	}
 
+	//登录
 	function login(){
 		var usr = $('#usr').val();
 		var pwd = $('#pwd').val();
@@ -27,22 +46,37 @@ $(function() {
 	    function (Result) {
 	        var result = JSON.parse(Result);
 	        if (result.success) {
-	        	if ("UN17030003" === data.approve) {
-	               	sessionStorage.setItem("approve","crd");//业务员
-	            } else if ("UN17030004" === data.approve) {
-	                sessionStorage.setItem("approve", "srd");//审核员
-	            } else if ("UN17030005" === data.approve) {
-	                sessionStorage.setItem("approve", "ct");//车队
-	            } else if ("UN17030006" === data.approve) {
-	                sessionStorage.setItem("approve", "ch");//调度
-	            } else {
-	                sessionStorage.setItem("approve", "test");
-	            }
+	        	var data = result.data;
+	        	if(data && data.approve){
+	        		sessionStorage.setItem("approve",Configure.approve[data.approve]);
+	        	}
+	        	rememberLog(usr,pwd);
 	            window.location.href = "main.html";
 	        } else {
 	            alert("登录名或密码错误");
 	        }
 	    });
+	}
+
+	//记住密码
+	function rememberLog(usr,pwd){
+		if($("#remember").prop("checked")){
+			var rememberLog = {
+				auto:true,
+				usr:usr,
+				pwd:pwd
+			};
+			$.cookie("rememberLog",JSON.stringify(rememberLog),{expires:7});
+		}else{
+			$.cookie("rememberLog","");
+		}
+	}
+
+	//帐号切换,需接入等三方登录
+	function change(){
+		$("#usr").val("");
+		$("#pwd").val("");
+		$("#remember").prop("checked",false);
 	}
 
 	//初始化
