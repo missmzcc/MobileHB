@@ -21,7 +21,7 @@ $(function() {
 
 	/*---------------事件绑定 start---------------*/
 	function bindEvent() {
-		$(".mui-table .cars_status_img").click(function() {
+		$(".mui-table .cars_status_img").on("click",function() {
 			var $this = $(this);
 			gotoDetail($this);
 		});
@@ -121,7 +121,7 @@ $(function() {
 
 	//数据展示
 	function showData(data, _index) {
-		if(data.length === 0) {
+		if(!data || data.length === 0) {
 			return;
 		}
 		var html = "";
