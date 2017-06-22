@@ -10,7 +10,7 @@
     $.extend({
     	//手机跨域请求域名
     	domain:function(){
-    		return 'http://106.14.239.55:5392/api.ashx';
+    		return 'http://106.14.239.55:5393/api.ashx';
     	},
         loginInfo: function (user) {
             $.ajax({
@@ -65,7 +65,7 @@
         },
         //状态信息
         statusInfo:function(status){
-        	if(status.length === 0){
+        	if(!status || status.length === 0){
         		return;
         	}
         	var statusStr = "";

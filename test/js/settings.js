@@ -68,7 +68,7 @@ $(function(){
 					window.location.href="login.html";
 				}
 			})
-		}) 
+		})
 	}
 	/*---------------事件绑定 end---------------*/
 
