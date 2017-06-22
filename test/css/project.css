@@ -310,3 +310,17 @@ footer{
 	margin-top: -5px;
 }
 /*-----track end-----*/
+
+/*-----realtime start---*/
+#realtime-search{
+	width: 20%;
+	line-height: 30px;
+	margin: 0 auto;
+	background-color: #007AFF;
+	text-align: center;
+}
+#realtime-search a{
+	color: white;
+}
+
+/*-----realtime  end----*/
