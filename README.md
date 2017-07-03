@@ -1,0 +1,3 @@
+# MobileHB
+这是一款针对商砼企业车辆监控和管理的手机app
+项目采用了hbulider的mui框架进行开发
